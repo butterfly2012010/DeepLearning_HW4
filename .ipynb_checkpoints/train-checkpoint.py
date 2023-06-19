@@ -68,7 +68,7 @@ def train_fn(train_loader, model, optimizer, loss_fn, scaler, scaled_anchors, ep
         loop.set_postfix(loss=mean_loss)
         # loop.set_postfix(acc=mean_accuracy)
         
-    with open('./train_loss_obj.txt', mode='w') as f:
+    with open('./train_loss_obj.txt', mode='a') as f:
             f.write(f"{epoch} {mean_loss:.4f}\n")
                 
 
@@ -111,9 +111,9 @@ def train_seg(train_loader, model, optimizer, loss_fn, scaler, epoch):
         loop.set_postfix(loss=mean_loss)
         loop.set_postfix(acc=mean_accuracy)
         
-    with open('./train_loss_seg.txt', mode='w') as f:
+    with open('./train_loss_seg.txt', mode='a') as f:
             f.write(f"{epoch} {mean_loss:.4f}\n")
-    with open('./train_acc_seg.txt', mode='w') as f:
+    with open('./train_acc_seg.txt', mode='a') as f:
             f.write(f"{epoch} {mean_accuracy:.4f}\n")
 
 
@@ -175,10 +175,10 @@ def main():
         if args.task == 'obj' and epoch % 1 == 0:# and epoch > 0:  # epoch % 5
             # print("On Test loader:")
             acc_test = check_class_accuracy(model, train_loader, threshold=config.CONF_THRESHOLD)
-            with open('./train_acc_obj.txt', mode='w') as f:
+            with open('./train_acc_obj.txt', mode='a') as f:
                 f.write(f"{epoch} {acc_test.item():.4f}\n")
             acc_test = check_class_accuracy(model, test_loader, threshold=config.CONF_THRESHOLD)
-            with open('./test_acc_obj.txt', mode='w') as f:
+            with open('./test_acc_obj.txt', mode='a') as f:
                 f.write(f"{epoch} {acc_test.item():.4f}\n")
 
             # pred_boxes, true_boxes = get_evaluation_bboxes(

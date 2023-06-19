@@ -8,6 +8,17 @@ and also the ChatGPT. I use it to help me generate the segmentation head and oth
 
 For the object detection task, I mainly use the architecture made by __aladdinpersson__.
 
+run this code
+```
+python train.py --task obj --epochs 10
+python train.py --task seg --epochs 10
+```
+or
+```
+bash run.sh
+```
+
+The followings are the model architecture.
 ```
 Implementation of YOLOv3 architecture
 
