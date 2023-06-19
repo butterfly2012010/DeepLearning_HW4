@@ -1,0 +1,5 @@
+ADE20K/
+PASCAL_VOC/
+weights/
+checkpoint.pth
+checkpoint_final.pth
